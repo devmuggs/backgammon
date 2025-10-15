@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcgsg4uebpjpf"]
+
+[ext_resource type="Script" uid="uid://g03hwgdic8u7" path="res://Components/Grabbable/Grababble.cs" id="1_ipnix"]
+
+[node name="Grabbable" type="Node3D"]
+script = ExtResource("1_ipnix")
+GrabStrength = 100.0
+Dampening = 2.0

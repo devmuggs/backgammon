@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmpxjxf3k0aem"]
+
+[ext_resource type="Script" uid="uid://c8hfdyw5jst4b" path="res://Dice/Dice.cs" id="1_3plqb"]
+[ext_resource type="PackedScene" uid="uid://dcgsg4uebpjpf" path="res://Components/Grabbable/Grabbable.tscn" id="2_d3cm8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75r64"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_27nyo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3cm8"]
+albedo_color = Color(0.5841771, 0.26518548, 0.2146488, 1)
+
+[node name="Dice" type="RigidBody3D"]
+script = ExtResource("1_3plqb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("BoxShape3D_75r64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_27nyo")
+surface_material_override/0 = SubResource("StandardMaterial3D_d3cm8")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="Grabbable" parent="." instance=ExtResource("2_d3cm8")]
+Dampening = 10.0
