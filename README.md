@@ -1,5 +1,16 @@
 # Backgammon 3D (Godot + C#)
 
+![Stars](https://img.shields.io/github/stars/devmuggs/backgammon?style=social)
+![Forks](https://img.shields.io/github/forks/devmuggs/backgammon?style=social)
+
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+![Issues](https://img.shields.io/github/issues/devmuggs/backgammon?style=flat-square)
+![PRs](https://img.shields.io/github/issues-pr/devmuggs/backgammon?style=flat-square)
+
+![Godot](https://img.shields.io/badge/Godot-4.x-339933?style=flat-square&logo=godot-engine)
+![C#](https://img.shields.io/badge/C%23-10.0-blue?style=flat-square&logo=c-sharp)
+![.NET](https://img.shields.io/badge/.NET-7+-purple?style=flat-square)
+
 As a professional fullstack software engineer, I wanted to explore game development to bring my experience to innovative and novel mechanics and gameplay. This project is a simple 3D Backgammon game built with Godot Engine and C# to learn the engine and C# development.
 
 プロのフルスタックソフトウェアエンジニアとして、革新的で新しいメカニクスとゲームプレイに自分の経験を活かすためにゲーム開発を探求したいと考えました。このプロジェクトは、Godot Engine と C# を使用して構築されたシンプルな 3D バックギャモンゲームで、エンジンと C# 開発を学ぶためのものです。
