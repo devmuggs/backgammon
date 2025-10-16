@@ -101,7 +101,7 @@ public partial class Grababble : Node3D
 			return;
 		}
 
-		if (@event is not InputEventMouseButton mouseEvent || !mouseEvent.IsAction("invoke_grab")) return;
+		if (@event is not InputEventMouseButton mouseEvent || !mouseEvent.IsAction("left_click")) return;
 		GD.Print($"Mouse Event: {mouseEvent.ButtonIndex}, Pressed: {mouseEvent.Pressed}");
 
 		if (mouseEvent.IsPressed() && !_isGrabbed)

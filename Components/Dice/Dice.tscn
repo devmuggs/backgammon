@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmpxjxf3k0aem"]
 
-[ext_resource type="Script" uid="uid://c8hfdyw5jst4b" path="res://Dice/Dice.cs" id="1_3plqb"]
+[ext_resource type="Script" uid="uid://c8hfdyw5jst4b" path="res://Components/Dice/Dice.cs" id="1_3plqb"]
 [ext_resource type="PackedScene" uid="uid://dcgsg4uebpjpf" path="res://Components/Grabbable/Grabbable.tscn" id="2_d3cm8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75r64"]
