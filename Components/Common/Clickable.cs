@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+using Scripts.Extensions;
+
 public partial class Clickable : Node3D
 {
 	[Export] public float ClickDistance { get; private set; } = 100f;
@@ -12,26 +14,32 @@ public partial class Clickable : Node3D
 	private Camera3D _camera;
 	private World3D _world;
 	private CollisionObject3D _collisionObject;
-	private DateTime _lastClickTime;
-	
+	private DateTime _lastClickTime = DateTime.MinValue;
+
+	public void SetClickable(bool clickable)
+	{
+		IsClickable = clickable;
+	}
 
 	public override void _Ready()
 	{
 		base._Ready();
 
-		_collisionObject = GetParent<CollisionObject3D>();
-		if (_collisionObject == null) GD.PrintErr("Clickable must be a child of a CollisionObject3D!");
-
-		if (_camera == null)
-		{
-			_camera = GetViewport().GetCamera3D();
-			if (_camera == null) GD.PrintErr("Clickable could not find Camera3D!");
-		}
-
-		_world = GetWorld3D();
-		if (_world == null) GD.PrintErr("Clickable could not find World3D!");
+		_collisionObject = this.GetCollisionObjectSafe();
+		_camera = this.GetCameraSafe();
+		_world = this.GetWorldSafe();
 
 		GD.Print($"Clickable: Ready on {Name}");
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		if (@event is not InputEventMouseButton mouseEvent) return;
+		if (@event.IsActionPressed("left_click") && mouseEvent.Pressed)
+		{
+			_OnMouseClick(mouseEvent.Position);
+		}
 	}
 
 	private bool CheckMouseOver(Vector2 mousePosition)
@@ -51,7 +59,7 @@ public partial class Clickable : Node3D
 		return result.Count > 0;
 	}
 
-	public void OnMouseClick(Vector2 mousePosition)
+	private void _OnMouseClick(Vector2 mousePosition)
 	{
 		GD.Print($"Clickable: Mouse click at {mousePosition} on {Name}");
 		if (!IsClickable) return;
@@ -65,21 +73,6 @@ public partial class Clickable : Node3D
 			_lastClickTime = DateTime.Now;
 			OnClick?.Invoke();
 			GD.Print($"Clickable: Clicked on {Name} at {mousePosition}");
-		}
-	}
-
-	public void SetClickable(bool clickable)
-	{
-		IsClickable = clickable;
-	}
-
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		if (@event is not InputEventMouseButton mouseEvent) return;
-		if (@event.IsActionPressed("left_click") && mouseEvent.Pressed)
-		{
-			OnMouseClick(mouseEvent.Position);
 		}
 	}
 }
