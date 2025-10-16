@@ -3,33 +3,26 @@ using System;
 
 using Scripts.Extensions;
 
+/// <summary>
+/// A Clickable component that can be attached to any Node3D. It detects mouse clicks on the object and triggers an event.
+/// <para>クリック可能なコンポーネントで、Node3Dにアタッチできます。オブジェクト上のマウスクリックを検出し、イベントをトリガーします。</para>
+/// </summary>
 public partial class Clickable : Node3D
 {
 	[Export] public float ClickDistance { get; private set; } = 100f;
 	[Export] public bool IsClickable { get; private set; } = true;
-	[Export] public float ClickCooldownSeconds { get; private set; } = 0.5f; // seconds
+	[Export] public float ClickCooldownSeconds { get; private set; } = 0.5f;
 
 	public event Action OnClick;
 
-	private Camera3D _camera;
-	private World3D _world;
-	private CollisionObject3D _collisionObject;
+	private Camera3D _camera => this.GetCameraSafe();
+	private World3D _world => this.GetWorldSafe();
+	private CollisionObject3D _collisionObject => this.GetCollisionObjectSafe();
 	private DateTime _lastClickTime = DateTime.MinValue;
 
 	public void SetClickable(bool clickable)
 	{
 		IsClickable = clickable;
-	}
-
-	public override void _Ready()
-	{
-		base._Ready();
-
-		_collisionObject = this.GetCollisionObjectSafe();
-		_camera = this.GetCameraSafe();
-		_world = this.GetWorldSafe();
-
-		GD.Print($"Clickable: Ready on {Name}");
 	}
 
 	public override void _Input(InputEvent @event)
@@ -52,7 +45,7 @@ public partial class Clickable : Node3D
 		{
 			From = from,
 			To = to,
-			CollisionMask = _collisionObject.CollisionLayer // only this object's layer
+			CollisionMask = _collisionObject.CollisionLayer
 		};
 
 		var result = spaceState.IntersectRay(query);

@@ -1,11 +1,13 @@
 using Godot;
-using System;
 
+/// <summary>
+/// A Piece component representing a game piece in a board game.
+/// <para>ボードゲームのゲームピースを表すPieceコンポーネントです。</para>
+/// </summary>
 public partial class Piece : RigidBody3D
 {
 	private Clickable _clickable;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
