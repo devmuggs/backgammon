@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk8k2w5u2l4t2"]
+
+[ext_resource type="Script" uid="uid://dwhaqblgvyog8" path="res://Components/Piece/Piece.cs" id="1_gnger"]
+[ext_resource type="PackedScene" uid="uid://dujexsi0dbrqg" path="res://Components/Common/Clickable.tscn" id="1_xdq2e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xdq2e"]
+height = 0.25802612
+radius = 1.5419922
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gnger"]
+
+[node name="Piece" type="RigidBody3D"]
+script = ExtResource("1_gnger")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00944519, 0)
+shape = SubResource("CylinderShape3D_xdq2e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.0480464, 0, 0, 0, 0.12623167, 0, 0, 0, 3.0480464, 0, 0, 0)
+mesh = SubResource("CylinderMesh_gnger")
+
+[node name="Clickable" parent="." instance=ExtResource("1_xdq2e")]

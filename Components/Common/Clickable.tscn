@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dujexsi0dbrqg"]
+
+[ext_resource type="Script" uid="uid://bkktfddtwuhem" path="res://Components/Common/Clickable.cs" id="1_5s8ib"]
+
+[node name="Clickable" type="Node3D"]
+script = ExtResource("1_5s8ib")
